@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
-
+import { Switch, Route } from "react-router-dom";
+import ApplyManager from "./components/apply-manager";
+import Success from "./components/success";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Switch>
+            <Route exact path="/"><p>Welcome Home</p></Route>
+            <Route exact path="/applies"><ApplyManager></ApplyManager></Route>
+            <Route exact path="/success"><Success></Success></Route>
+
+            <Route path="/:id">
+                <p>This text will render for any route other than those defined above</p>
+            </Route>
+        </Switch>
     </div>
   );
 }
